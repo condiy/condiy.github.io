@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="LeetCode,">
 
 
 
@@ -79,13 +79,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Condi">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="1. 有序数组的 Two SumLeetCode 167 Input: numbers 有序数组,target 需要求和的值Output: index1,index2  两个值的下标，注意从1开始 题目描述：在有序数组中寻找两个数，使之和为 target 使用双指针，一个指针指向较小的元素，一个指针指向较大的元素。小指针从头开始往后遍历，大指针从尾开始往前遍历。  如果两个指针指向的元素和为 ta">
+<meta name="keywords" content="LeetCode">
+<meta property="og:type" content="article">
+<meta property="og:title" content="双指针">
+<meta property="og:url" content="http://yoursite.com/2019/06/28/双指针/index.html">
 <meta property="og:site_name" content="Condi">
+<meta property="og:description" content="1. 有序数组的 Two SumLeetCode 167 Input: numbers 有序数组,target 需要求和的值Output: index1,index2  两个值的下标，注意从1开始 题目描述：在有序数组中寻找两个数，使之和为 target 使用双指针，一个指针指向较小的元素，一个指针指向较大的元素。小指针从头开始往后遍历，大指针从尾开始往前遍历。  如果两个指针指向的元素和为 ta">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-06-27T22:40:57.775Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Condi">
+<meta name="twitter:title" content="双指针">
+<meta name="twitter:description" content="1. 有序数组的 Two SumLeetCode 167 Input: numbers 有序数组,target 需要求和的值Output: index1,index2  两个值的下标，注意从1开始 题目描述：在有序数组中寻找两个数，使之和为 target 使用双指针，一个指针指向较小的元素，一个指针指向较大的元素。小指针从头开始往后遍历，大指针从尾开始往前遍历。  如果两个指针指向的元素和为 ta">
 
 
 
@@ -115,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/28/双指针/">
 
 
 
 
 
-  <title>Condi</title>
+  <title>双指针 | Condi</title>
   
 
 
@@ -140,8 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -234,9 +238,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -266,9 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/28/双指针/" itemprop="url">双指针</a></h1>
+          <h1 class="post-title" itemprop="name headline">双指针</h1>
         
 
         <div class="post-meta">
@@ -318,9 +320,7 @@
       
 
       
-        
-          
-            <h1 id="1-有序数组的-Two-Sum"><a href="#1-有序数组的-Two-Sum" class="headerlink" title="1. 有序数组的 Two Sum"></a>1. 有序数组的 Two Sum</h1><p>LeetCode 167</p>
+        <h1 id="1-有序数组的-Two-Sum"><a href="#1-有序数组的-Two-Sum" class="headerlink" title="1. 有序数组的 Two Sum"></a>1. 有序数组的 Two Sum</h1><p>LeetCode 167</p>
 <p>Input: numbers 有序数组,target 需要求和的值<br>Output: index1,index2  两个值的下标，注意从1开始</p>
 <p>题目描述：在有序数组中寻找两个数，使之和为 target</p>
 <p>使用双指针，一个指针指向较小的元素，一个指针指向较大的元素。小指针从头开始往后遍历，大指针从尾开始往前遍历。</p>
@@ -363,8 +363,6 @@
 <p>题目描述：删除 s 中的一些字符，使之能构成 d 列表中的一个字符串，找出能构成的最长字符串，如果字符串长度相同，则取字典序最小的。</p>
 <p>通过删除 s 中的一些字符获得字符串 t，可以认为 t 是 s 的子串序列，我们可以用双指针判断一个字符串是否是另一个字符串的子序列</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">var findLongestWord = function (s, d) &#123;</span><br><span class="line">  let longestCode = &apos;&apos;</span><br><span class="line"></span><br><span class="line">  for (let cur of d) &#123;</span><br><span class="line">    const l1 = longestCode.length, l2 = cur.length</span><br><span class="line">    if (l1 &gt; l2 || (l1 === l2 &amp;&amp; cur &gt; longestCode))</span><br><span class="line">      continue</span><br><span class="line">    if (isSubStr(s, cur)) &#123;</span><br><span class="line">      longestCode = cur</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return longestCode</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">const isSubStr = (s, target) =&gt; &#123;</span><br><span class="line">  let i = 0, j = 0</span><br><span class="line">  while (i &lt; s.length &amp;&amp; j &lt; target.length) &#123;</span><br><span class="line">    if (s[i] === target[j]) &#123;</span><br><span class="line">      j++</span><br><span class="line">    &#125;</span><br><span class="line">    i++</span><br><span class="line">  &#125;</span><br><span class="line">  return j === target.length</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
       
     </div>
     
@@ -379,136 +377,36 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/24/hexo之next主题部署/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Condi">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Condi">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/24/hexo之next主题部署/" itemprop="url">hexo之next主题部署</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-24T23:50:23+08:00">
-                2019-06-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
           
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>关键命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo clean 清除 Hexo 缓存</span><br><span class="line">hexo s --debug 启动 Hexo 本地站点并开启调试模式</span><br></pre></td></tr></table></figure>
-
-<h1 id="1"><a href="#1" class="headerlink" title="1"></a>1</h1><h2 id="2"><a href="#2" class="headerlink" title="2"></a>2</h2><h1 id="2-1"><a href="#2-1" class="headerlink" title="2"></a>2</h1><h2 id="4"><a href="#4" class="headerlink" title="4"></a>4</h2>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
       
 
       
       
-        <div class="post-eof"></div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/24/hexo之next主题部署/" rel="next" title="hexo之next主题部署">
+                <i class="fa fa-chevron-left"></i> hexo之next主题部署
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
       
     </footer>
   </div>
@@ -518,10 +416,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -529,6 +428,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -549,8 +452,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -601,6 +513,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-有序数组的-Two-Sum"><span class="nav-number">1.</span> <span class="nav-text">1. 有序数组的 Two Sum</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-两数平方和"><span class="nav-number">2.</span> <span class="nav-text">2. 两数平方和</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-反转字符串中的元音字母"><span class="nav-number">3.</span> <span class="nav-text">3. 反转字符串中的元音字母</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-回文字符串"><span class="nav-number">4.</span> <span class="nav-text">4. 回文字符串</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-归并两个有序数组"><span class="nav-number">5.</span> <span class="nav-text">5. 归并两个有序数组</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-判断链表是否存在环"><span class="nav-number">6.</span> <span class="nav-text">6. 判断链表是否存在环</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-最长子序列"><span class="nav-number">7.</span> <span class="nav-text">7. 最长子序列</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -741,6 +669,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
