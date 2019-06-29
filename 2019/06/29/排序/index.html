@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="快速选择利用了快速排序的思想，求解第 K 个元素的问题。利用的是快速排序的划分思想 partition() 进行实现的。需要先打乱数组，不然最坏的情况复杂度为 O(N^2)。 快速排序的每次 partition() 过程中都排好一个位置。如果排好的是正数第K个位置，那么它就是第K小的元素。 堆预备知识：  大根堆：根节点为最大值，每个结点的值大于等于孩子结点的值。 小根堆：根节点的值为最小值，每个">
+<meta name="description" content="快速选择利用了快速排序的思想，求解第 K 个元素的问题。利用的是快速排序的划分思想 partition() 进行实现的。需要先打乱数组，不然最坏的情况复杂度为 O(N^2)。 快速排序的每次 partition() 过程中都排好一个位置。如果排好的是正数第K个位置，那么它就是第K小的元素。 堆预备知识：  堆是一个完全二叉树 完全二叉树：除开最后一层，其他层的节点数都达到最大，最后一层的所有节点都">
 <meta name="keywords" content="LeetCode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="排序">
 <meta property="og:url" content="http://yoursite.com/2019/06/29/排序/index.html">
 <meta property="og:site_name" content="Condi">
-<meta property="og:description" content="快速选择利用了快速排序的思想，求解第 K 个元素的问题。利用的是快速排序的划分思想 partition() 进行实现的。需要先打乱数组，不然最坏的情况复杂度为 O(N^2)。 快速排序的每次 partition() 过程中都排好一个位置。如果排好的是正数第K个位置，那么它就是第K小的元素。 堆预备知识：  大根堆：根节点为最大值，每个结点的值大于等于孩子结点的值。 小根堆：根节点的值为最小值，每个">
+<meta property="og:description" content="快速选择利用了快速排序的思想，求解第 K 个元素的问题。利用的是快速排序的划分思想 partition() 进行实现的。需要先打乱数组，不然最坏的情况复杂度为 O(N^2)。 快速排序的每次 partition() 过程中都排好一个位置。如果排好的是正数第K个位置，那么它就是第K小的元素。 堆预备知识：  堆是一个完全二叉树 完全二叉树：除开最后一层，其他层的节点数都达到最大，最后一层的所有节点都">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-29T05:17:15.459Z">
+<meta property="og:updated_time" content="2019-06-29T07:01:35.742Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="排序">
-<meta name="twitter:description" content="快速选择利用了快速排序的思想，求解第 K 个元素的问题。利用的是快速排序的划分思想 partition() 进行实现的。需要先打乱数组，不然最坏的情况复杂度为 O(N^2)。 快速排序的每次 partition() 过程中都排好一个位置。如果排好的是正数第K个位置，那么它就是第K小的元素。 堆预备知识：  大根堆：根节点为最大值，每个结点的值大于等于孩子结点的值。 小根堆：根节点的值为最小值，每个">
+<meta name="twitter:description" content="快速选择利用了快速排序的思想，求解第 K 个元素的问题。利用的是快速排序的划分思想 partition() 进行实现的。需要先打乱数组，不然最坏的情况复杂度为 O(N^2)。 快速排序的每次 partition() 过程中都排好一个位置。如果排好的是正数第K个位置，那么它就是第K小的元素。 堆预备知识：  堆是一个完全二叉树 完全二叉树：除开最后一层，其他层的节点数都达到最大，最后一层的所有节点都">
 
 
 
@@ -324,12 +324,24 @@
 <p>快速排序的每次 partition() 过程中都排好一个位置。如果排好的是正数第K个位置，那么它就是第K小的元素。</p>
 <h1 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h1><p>预备知识：</p>
 <ul>
+<li>堆是一个完全二叉树</li>
+<li>完全二叉树：除开最后一层，其他层的节点数都达到最大，最后一层的所有节点都集中在左边。</li>
 <li>大根堆：根节点为最大值，每个结点的值大于等于孩子结点的值。</li>
 <li>小根堆：根节点的值为最小值，每个根节点的值都小于等于孩子结点的值。</li>
+<li>堆的存储：用数组来存储。</li>
+<li>对于节点i，子节点为2i+1 与 2i+2</li>
+<li>堆排序算法（以大根堆（heapify）为例）：<ol>
+<li>对每一个非叶子节点，从下至上，从右至左，做 shiftDown 下沉操作。操作后根节点为最大值，将其与最后一个结点交换。</li>
+<li>除开最后一个节点，其余节点继续转化成大根堆，此时根节点为次最大，将其与最后一个结点交换。</li>
+<li>重复2，直到堆中元素个数为1，排序完成。</li>
+</ol>
+</li>
 </ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> swap = <span class="function">(<span class="params">arr, i, j</span>) =&gt;</span> &#123;</span><br><span class="line">  [arr[i], arr[j]] = [arr[j], arr[i]]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> shiftDowm = <span class="function">(<span class="params">arr, i, length</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">2</span> * i + <span class="number">1</span>; j &lt; length; j = j * <span class="number">2</span> + <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> temp = arr[i]</span><br><span class="line">    <span class="keyword">if</span> (j + <span class="number">1</span> &lt; length &amp;&amp; arr[j + <span class="number">1</span>] &gt; arr[j]) &#123;</span><br><span class="line">      j++</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (arr[j] &gt; temp) &#123;</span><br><span class="line">      swap(arr, i, j)</span><br><span class="line">      i = j</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> heapSort = <span class="function">(<span class="params">arr</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="built_in">Math</span>.floor(arr.length / <span class="number">2</span> - <span class="number">1</span>); i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">    shiftDowm(arr, i, arr.length)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = arr.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">    swap(arr, <span class="number">0</span>, i)</span><br><span class="line">    shiftDowm(arr, <span class="number">0</span>, i)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>用于求解第 K 个最小元素问题。可以维护一个大小为K的大根堆。大根堆的堆顶元素即为该堆的最大值。每次遍历新元素时，如果比堆顶元素小，则把堆顶元素去除，将新元素加到堆中，调整堆。遍历完之后，堆里面的K个元素是从小到大排列的，堆顶即为第K个最小元素。</p>
 <p>也可以用于求解第K个最大元素的问题。维护一个K大小的小根堆。</p>
-<h1 id="Kth-Element"><a href="#Kth-Element" class="headerlink" title="Kth Element"></a>Kth Element</h1><blockquote>
+<h2 id="JS-实现堆排序"><a href="#JS-实现堆排序" class="headerlink" title="JS 实现堆排序"></a>JS 实现堆排序</h2><h1 id="Kth-Element"><a href="#Kth-Element" class="headerlink" title="Kth Element"></a>Kth Element</h1><blockquote>
 <p>LeetCode 215</p>
 <p>Input: [3,2,1,5,6,4] and k = 2<br>Output: 5</p>
 <p>题目描述：找出倒数第K大的元素</p>
@@ -532,7 +544,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#快速选择"><span class="nav-number">1.</span> <span class="nav-text">快速选择</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#堆"><span class="nav-number">2.</span> <span class="nav-text">堆</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Kth-Element"><span class="nav-number">3.</span> <span class="nav-text">Kth Element</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#排序"><span class="nav-number">3.1.</span> <span class="nav-text">排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#堆-1"><span class="nav-number">3.2.</span> <span class="nav-text">堆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#快速排序"><span class="nav-number">3.3.</span> <span class="nav-text">快速排序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#出现频率最多的-k-个元素"><span class="nav-number">4.</span> <span class="nav-text">出现频率最多的 k 个元素</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#按照字符串出现次数对字符串进行排序"><span class="nav-number">5.</span> <span class="nav-text">按照字符串出现次数对字符串进行排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#荷兰国旗问题"><span class="nav-number">6.</span> <span class="nav-text">荷兰国旗问题</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#快速选择"><span class="nav-number">1.</span> <span class="nav-text">快速选择</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#堆"><span class="nav-number">2.</span> <span class="nav-text">堆</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JS-实现堆排序"><span class="nav-number">2.1.</span> <span class="nav-text">JS 实现堆排序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Kth-Element"><span class="nav-number">3.</span> <span class="nav-text">Kth Element</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#排序"><span class="nav-number">3.1.</span> <span class="nav-text">排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#堆-1"><span class="nav-number">3.2.</span> <span class="nav-text">堆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#快速排序"><span class="nav-number">3.3.</span> <span class="nav-text">快速排序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#出现频率最多的-k-个元素"><span class="nav-number">4.</span> <span class="nav-text">出现频率最多的 k 个元素</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#按照字符串出现次数对字符串进行排序"><span class="nav-number">5.</span> <span class="nav-text">按照字符串出现次数对字符串进行排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#荷兰国旗问题"><span class="nav-number">6.</span> <span class="nav-text">荷兰国旗问题</span></a></li></ol></div>
             
 
           </div>
