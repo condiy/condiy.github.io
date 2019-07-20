@@ -1,326 +1,201 @@
 <!DOCTYPE html>
 
 
+  <html class="light page-post">
 
-  
 
-
-<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="theme-color" content="#222">
+  <meta charset="utf-8">
+  
+  <title>贪心思想 | XiViEr</title>
 
-
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
+    <meta name="keywords" content="LeetCode,">
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="LeetCode,">
-
-
-
-
-
-
-
-
-
-
-<meta name="description" content="贪心思想的原理：保证每次操作都是局部最优，并且最后的结果是全局最优的。 分配饼干 LeetCode 455 Input: [1,2], [1,2,3]Output: 2 题目描述：每个孩子都有一个满足度，每个饼干都有一个大小，只有饼干的大小大于等于孩子的满足度才能满足孩子。每个孩子只能分配一块饼干。  给每个孩子的饼干应该尽可能小，但是又能满足他。这样满足度大的饼干就能满足满足度比较大的孩子。就可">
+  <meta name="description" content="贪心思想的原理：保证每次操作都是局部最优，并且最后的结果是全局最优的。 分配饼干 LeetCode 455 Input: [1,2], [1,2,3]Output: 2 题目描述：每个孩子都有一个满足度，每个饼干都有一个大小，只有饼干的大小大于等于孩子的满足度才能满足孩子。每个孩子只能分配一块饼干。  给每个孩子的饼干应该尽可能小，但是又能满足他。这样满足度大的饼干就能满足满足度比较大的孩子。就可">
 <meta name="keywords" content="LeetCode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="贪心思想">
-<meta property="og:url" content="https://xiver.gitee.io/2019/06/30/贪心思想/index.html">
-<meta property="og:site_name" content="Condi">
+<meta property="og:url" content="https://xivier.github.io/2019/06/30/贪心思想/index.html">
+<meta property="og:site_name" content="XiViEr">
 <meta property="og:description" content="贪心思想的原理：保证每次操作都是局部最优，并且最后的结果是全局最优的。 分配饼干 LeetCode 455 Input: [1,2], [1,2,3]Output: 2 题目描述：每个孩子都有一个满足度，每个饼干都有一个大小，只有饼干的大小大于等于孩子的满足度才能满足孩子。每个孩子只能分配一块饼干。  给每个孩子的饼干应该尽可能小，但是又能满足他。这样满足度大的饼干就能满足满足度比较大的孩子。就可">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-30T07:56:50.893Z">
+<meta property="og:updated_time" content="2019-07-20T02:47:19.059Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="贪心思想">
 <meta name="twitter:description" content="贪心思想的原理：保证每次操作都是局部最优，并且最后的结果是全局最优的。 分配饼干 LeetCode 455 Input: [1,2], [1,2,3]Output: 2 题目描述：每个孩子都有一个满足度，每个饼干都有一个大小，只有饼干的大小大于等于孩子的满足度才能满足孩子。每个孩子只能分配一块饼干。  给每个孩子的饼干应该尽可能小，但是又能满足他。这样满足度大的饼干就能满足满足度比较大的孩子。就可">
 
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Gemini',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-
-  <link rel="canonical" href="https://xiver.gitee.io/2019/06/30/贪心思想/">
-
-
-
-
-
-  <title>贪心思想 | Condi</title>
   
 
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
 
 
 
-
-
-
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
 
 </head>
+</html>
+<body>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
   
-    
-  
 
-  <div class="container sidebar-position-left page-post-detail">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Condi</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
       
-        <p class="site-subtitle"></p>
-      
-  </div>
-
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
-            
-            首页
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+            博客
           </a>
         </li>
       
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
-            
-            关于
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+            分类
           </a>
         </li>
       
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
-            
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
             标签
           </a>
         </li>
       
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
-            
-            归档
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+            关于
           </a>
         </li>
       
-
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+            搜索
+          </a>
+        </li>
       
     </ul>
-  
-
-  
-</nav>
+  </div>
 
 
+</div>
 
- </div>
-    </header>
 
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#分配饼干"><span class="toc-text">分配饼干</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#不重叠的区间个数"><span class="toc-text">不重叠的区间个数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#投飞镖刺破气球"><span class="toc-text">投飞镖刺破气球</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#根据身高和序号重组队列"><span class="toc-text">根据身高和序号重组队列</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#买卖股票最大的收益-I"><span class="toc-text">买卖股票最大的收益 I</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#买卖股票的最大收益-II"><span class="toc-text">买卖股票的最大收益 II</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#种植花朵"><span class="toc-text">种植花朵</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#判断是否为子序列"><span class="toc-text">判断是否为子序列</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#修改一个数变成非递减数组"><span class="toc-text">修改一个数变成非递减数组</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#子数组最大的和"><span class="toc-text">子数组最大的和</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#分隔字符串使同种字符出现在一起"><span class="toc-text">分隔字符串使同种字符出现在一起</span></a></li></ol>
+  </div>
 
-  <div id="posts" class="posts-expand">
-    
 
-  
 
-  
-  
-  
+<div class="content content-post CENTER">
+   <article id="post-贪心思想" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">贪心思想</h1>
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xiver.gitee.io/2019/06/30/贪心思想/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Condi">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Condi">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">贪心思想</h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-30T08:41:10+08:00">
-                2019-06-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2019.06.30</span>
+      </span>
 
       
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>XiViEr</span>
+        </span>
       
 
       
-        <p>贪心思想的原理：保证每次操作都是局部最优，并且最后的结果是全局最优的。</p>
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/algorithm/">algorithm</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>贪心思想的原理：保证每次操作都是局部最优，并且最后的结果是全局最优的。</p>
 <h1 id="分配饼干"><a href="#分配饼干" class="headerlink" title="分配饼干"></a>分配饼干</h1><blockquote>
 <p>LeetCode 455</p>
 <p>Input: [1,2], [1,2,3]<br>Output: 2</p>
@@ -411,381 +286,159 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> partitionLabels = <span class="function"><span class="keyword">function</span> (<span class="params">S</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> res = []</span><br><span class="line">  <span class="keyword">let</span> firstIndex = <span class="number">0</span></span><br><span class="line">  <span class="keyword">while</span> (firstIndex &lt; S.length) &#123;</span><br><span class="line">    <span class="keyword">let</span> lastIndex = firstIndex</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = firstIndex; i &lt; S.length &amp;&amp; i &lt;= lastIndex; i++) &#123;</span><br><span class="line">      <span class="keyword">let</span> index = S.lastIndexOf(S[i])</span><br><span class="line">      <span class="keyword">if</span> (index &gt; lastIndex) &#123;</span><br><span class="line">        lastIndex = index</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    res.push(lastIndex - firstIndex + <span class="number">1</span>)</span><br><span class="line">    firstIndex = lastIndex + <span class="number">1</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> res</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 
-      
-    </div>
     
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2019/06/29/排序/" rel="next" title="排序">
-                <i class="fa fa-chevron-left"></i> 排序
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/30/二分查找/" rel="prev" title="二分查找">
-                二分查找 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
+
+</article>
 
 
+   
 
-    <div class="post-spread">
-      
-    </div>
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2019/06/29/排序/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2019/06/30/二分查找/">
+        <i class="icon icon-angle-right"></i>
+    </a>
   </div>
 
 
-          </div>
-          
 
 
-          
-
-  
-
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">Condi</p>
-              <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">5</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">1</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
-
-          
-
-          
-
-          
-          
-
-          
-          
-
-          
-
-        </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#分配饼干"><span class="nav-number">1.</span> <span class="nav-text">分配饼干</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#不重叠的区间个数"><span class="nav-number">2.</span> <span class="nav-text">不重叠的区间个数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#投飞镖刺破气球"><span class="nav-number">3.</span> <span class="nav-text">投飞镖刺破气球</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#根据身高和序号重组队列"><span class="nav-number">4.</span> <span class="nav-text">根据身高和序号重组队列</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#买卖股票最大的收益-I"><span class="nav-number">5.</span> <span class="nav-text">买卖股票最大的收益 I</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#买卖股票的最大收益-II"><span class="nav-number">6.</span> <span class="nav-text">买卖股票的最大收益 II</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#种植花朵"><span class="nav-number">7.</span> <span class="nav-text">种植花朵</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#判断是否为子序列"><span class="nav-number">8.</span> <span class="nav-text">判断是否为子序列</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#修改一个数变成非递减数组"><span class="nav-number">9.</span> <span class="nav-text">修改一个数变成非递减数组</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#子数组最大的和"><span class="nav-number">10.</span> <span class="nav-text">子数组最大的和</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分隔字符串使同种字符出现在一起"><span class="nav-number">11.</span> <span class="nav-text">分隔字符串使同种字符出现在一起</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Condi</span>
-
-  
 </div>
 
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
 
 
 
 
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
         
-
-
-
-
-
-
-
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+              博客
+            </a>
+          </li>
         
-      </div>
-    </footer>
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
 
     
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
+
+    
     
 
     
+
+    
+    
+
+    
+
+<!-- Gitalk评论插件通用代码 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+const gitalk = new Gitalk({
+  clientID: '277317290454635afa73',
+  clientSecret: '78223c859304da5e8d71bfce136d436c6ff95c37',
+  repo: 'blog-comment',
+  owner: 'forsigner',
+  // 在这里设置一下截取前50个字符串, 这是因为 github 对 label 的长度有了要求, 如果超过
+  // 50个字符串则会报错.
+  // id: location.pathname.split('/').pop().substring(0, 49),
+  id: location.pathname,
+  admin: ['forsigner'],
+  // facebook-like distraction free mode
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+<!-- Gitalk代码结束 -->
+
+
 
   </div>
 
   
 
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
   }
 </script>
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
 
 </body>
 </html>
