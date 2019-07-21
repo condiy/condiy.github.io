@@ -24,7 +24,7 @@
 <meta property="og:description" content="描述总结一下 setTimeout、Promise、Async/Await 的区别 正文我觉得这题主要是考察这三者在事件循环中的区别，事件循环中分为宏任务队列和微任务队列。 其中settimeout的回调函数放到宏任务队列里，等到执行栈清空以后执行； promise.then里的回调函数会放到相应宏任务的微任务队列里，等宏任务里面的同步代码执行完再执行；async函数表示函数里面可能会有异步方法，">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://xivier.github.io/2019/05/01/setTimeout、Promise、Async和Await的区别/assets/68747470733a2f2f696d672d626c6f672e6373646e696d672e636e2f32303139303133313137343431333536322e706e67.png">
-<meta property="og:updated_time" content="2019-07-21T08:32:26.753Z">
+<meta property="og:updated_time" content="2019-07-21T13:42:15.203Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="setTimeout、Promise、Async&#x2F;Await 的区别">
 <meta name="twitter:description" content="描述总结一下 setTimeout、Promise、Async/Await 的区别 正文我觉得这题主要是考察这三者在事件循环中的区别，事件循环中分为宏任务队列和微任务队列。 其中settimeout的回调函数放到宏任务队列里，等到执行栈清空以后执行； promise.then里的回调函数会放到相应宏任务的微任务队列里，等宏任务里面的同步代码执行完再执行；async函数表示函数里面可能会有异步方法，">
@@ -151,7 +151,7 @@ ga('send', 'pageview');
 
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#描述"><span class="toc-text">描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正文"><span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#setTimeout"><span class="toc-text">setTimeout</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Promise"><span class="toc-text">Promise</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#async-await"><span class="toc-text">async/await</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#结论"><span class="toc-text">结论</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#描述"><span class="toc-text">描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正文"><span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#setTimeout"><span class="toc-text">setTimeout</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Promise"><span class="toc-text">Promise</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#async-await"><span class="toc-text">async/await</span></a></li></ol></li></ol>
   </div>
 
 
@@ -224,7 +224,7 @@ ga('send', 'pageview');
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">func1().then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(res);  <span class="comment">// 30</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 <p>await的含义为等待，也就是 async 函数需要等待await后的函数执行完成并且有了返回结果（Promise对象）之后，才能继续执行下面的代码。await通过返回一个Promise对象来实现同步的效果。</p>
-<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3>
+
     
   </div>
 
@@ -235,10 +235,10 @@ ga('send', 'pageview');
 
    
   <div class="box-prev-next clearfix">
-    <a class="show pull-left" href="/2019/05/01/map(parseInt)/">
+    <a class="show pull-left" href="/2019/04/22/map(parseInt)/">
         <i class="icon icon-angle-left"></i>
     </a>
-    <a class="show pull-right" href="/2019/06/28/双指针/">
+    <a class="show pull-right" href="/2019/06/22/Set、Map、WeakSet、WeakMap/">
         <i class="icon icon-angle-right"></i>
     </a>
   </div>
