@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>二分查找 | XiViEr</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="LeetCode,">
+  
+
+  <meta name="description" content="原始二分查找 Input : [1,2,3,4,5]key : 3return the index : 2  12345678910const binarySearch = (nums, key) =&amp;gt; &amp;#123;  let l = 0, h = nums.length - 1, mid  while (l &amp;lt;= h) &amp;#123;    mid = Math.floor(l + (">
+<meta name="keywords" content="LeetCode">
+<meta property="og:type" content="article">
+<meta property="og:title" content="二分查找">
+<meta property="og:url" content="https://xivier.github.io/2019/06/30/二分查找/index.html">
+<meta property="og:site_name" content="XiViEr">
+<meta property="og:description" content="原始二分查找 Input : [1,2,3,4,5]key : 3return the index : 2  12345678910const binarySearch = (nums, key) =&amp;gt; &amp;#123;  let l = 0, h = nums.length - 1, mid  while (l &amp;lt;= h) &amp;#123;    mid = Math.floor(l + (">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-07-20T02:47:03.690Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="二分查找">
+<meta name="twitter:description" content="原始二分查找 Input : [1,2,3,4,5]key : 3return the index : 2  12345678910const binarySearch = (nums, key) =&amp;gt; &amp;#123;  let l = 0, h = nums.length - 1, mid  while (l &amp;lt;= h) &amp;#123;    mid = Math.floor(l + (">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#原始二分查找"><span class="toc-text">原始二分查找</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#求开方"><span class="toc-text">求开方</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#大于给定元素的最小元素"><span class="toc-text">大于给定元素的最小元素</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#有序数组的-Single-Element"><span class="toc-text">有序数组的 Single Element</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第一个错误的版本"><span class="toc-text">第一个错误的版本</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#旋转数组的最小数字"><span class="toc-text">旋转数组的最小数字</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#查找区间"><span class="toc-text">查找区间</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-二分查找" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">二分查找</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2019.06.30</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>XiViEr</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/algorithm/">algorithm</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1 id="原始二分查找"><a href="#原始二分查找" class="headerlink" title="原始二分查找"></a>原始二分查找</h1><blockquote>
+<p>Input : [1,2,3,4,5]<br>key : 3<br>return the index : 2</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> binarySearch = <span class="function">(<span class="params">nums, key</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> l = <span class="number">0</span>, h = nums.length - <span class="number">1</span>, mid</span><br><span class="line">  <span class="keyword">while</span> (l &lt;= h) &#123;</span><br><span class="line">    mid = <span class="built_in">Math</span>.floor(l + (h - l) / <span class="number">2</span>)</span><br><span class="line">    <span class="keyword">if</span> (nums[mid] === key) <span class="keyword">return</span> mid</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &gt; key) h = mid - <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span> l = mid + <span class="number">1</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度：二分查找，每次将查找区间减半，这种折半特性的时间复杂度为 O(logN)</p>
+<p>返回值：</p>
+<ul>
+<li>-1：表示没有查找到 key。</li>
+<li>l：表示插入到 nums 中的正确位置。</li>
+</ul>
+<p>变种：</p>
+<p>二分查找有很多变种，变种要注意边界值的判断。例如在一个有重复元素中的数组中查找最左边的 key 值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> binarySearch = <span class="function">(<span class="params">nums, key</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> l = <span class="number">0</span>, h = nums.length - <span class="number">1</span>, mid</span><br><span class="line">  <span class="keyword">while</span> (l &lt; h) &#123;</span><br><span class="line">    mid = <span class="built_in">Math</span>.floor(l + (h - l) / <span class="number">2</span>)</span><br><span class="line">    <span class="keyword">if</span> (key &lt;= nums[mid]) h = mid</span><br><span class="line">    <span class="keyword">else</span> l = mid + <span class="number">1</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> l</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>和上述的实现有什么不同呢？</p>
+<ul>
+<li>赋值表达式变成了 h = mid</li>
+<li>循环语句变成了 l &lt; h</li>
+<li>最后返回的是 l</li>
+</ul>
+<p>因为要找最左的值，所以设置 key &lt;= nums[mid] 时，最左的区间位于 [l,mid] 中，此时将 h = mid，因为 mid 所在的位置也可以是解。</p>
+<p>如果要找最右的值，应当设置 key &gt;= nums[mid] 时，最右的区间位于 [mid,h] 中，此时将 l = mid，因为 mid 所在的位置也可以是解。</p>
+<p>在 h = m 情况下，如果循环条件为 l &lt;= h，那么有可能会出现无限循环无法退出的情况。</p>
+<h1 id="求开方"><a href="#求开方" class="headerlink" title="求开方"></a>求开方</h1><blockquote>
+<p>LeetCode 69</p>
+<p>Input: 4<br>Output: 2<br>Input: 8<br>Output: 2</p>
+<p>如果开方开不尽，开方结果向下取整。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mySqrt = <span class="function"><span class="keyword">function</span> (<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> l = <span class="number">1</span>, h = x</span><br><span class="line">  <span class="keyword">while</span> (l &lt;= h) &#123;</span><br><span class="line">    <span class="keyword">let</span> mid = <span class="built_in">Math</span>.floor(l + (h - l) / <span class="number">2</span>)</span><br><span class="line">    <span class="keyword">let</span> sqrt = <span class="built_in">Math</span>.floor(x / mid)</span><br><span class="line">    <span class="keyword">if</span> (sqrt === mid) <span class="keyword">return</span> mid</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (sqrt &lt; mid) h = mid - <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span> l = mid + <span class="number">1</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> h</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>通过二分查找来查找开方数 sqrt，因为 sqrt * sqrt = x。所以可以对 1 -  x 的区间进行二分查找。</p>
+<p>本题关键是最后的返回值，退出循环时， l &gt; h，当开方开不尽的时候，结果就是 h ，为什么是 h 不是 l 呢？循环退出时， h 总是比 l 小1，由于本题要向下取整，所以取 h。</p>
+<h1 id="大于给定元素的最小元素"><a href="#大于给定元素的最小元素" class="headerlink" title="大于给定元素的最小元素"></a>大于给定元素的最小元素</h1><blockquote>
+<p>LeetCode 744</p>
+<p>Input:<br>letters = [“c”, “f”, “j”]<br>target = “d”<br>Output: “f”<br>Input:<br>letters = [“c”, “f”, “j”]<br>target = “k”<br>Output: “c”</p>
+<p>题目描述：给定一个有序的字符数组 letters，再给定一个字符 target，要求在 letters 中查找大于 target 的最小字符。如果找不到就返回第一个元素。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> nextGreatestLetter = <span class="function"><span class="keyword">function</span> (<span class="params">letters, target</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> l = <span class="number">0</span>, h = letters.length - <span class="number">1</span></span><br><span class="line">  <span class="keyword">let</span> mid</span><br><span class="line">  <span class="keyword">while</span> (l &lt;= h) &#123;</span><br><span class="line">    mid = <span class="built_in">Math</span>.floor(l + (h - l) / <span class="number">2</span>)</span><br><span class="line">    <span class="keyword">if</span> (letters[mid] &lt;= target) &#123;</span><br><span class="line">      l = mid + <span class="number">1</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      h = mid - <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> l &lt; letters.length ? letters[l] : letters[<span class="number">0</span>]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>由于字符数组是有序的，根据有序数组查找指定字符，想到用二分查找。</p>
+<h1 id="有序数组的-Single-Element"><a href="#有序数组的-Single-Element" class="headerlink" title="有序数组的 Single Element"></a>有序数组的 Single Element</h1><blockquote>
+<p>LeetCode 540</p>
+<p>Input: [1, 1, 2, 3, 3, 4, 4, 8, 8]<br>Output: 2</p>
+<p>一个有序数组只有一个数不出现两次，找出这个数</p>
+</blockquote>
+<p>时间复杂度要求 O(logN)，因此很容易想到用二分查找。</p>
+<p>假设index 为 Single Element 出现在数组中的位置。在 index 之后，数组原来的下标状态将会改变。如果 m 为偶数， m+1 &lt; index，那么，nums[m] = nums[m+1]；m+1 &gt;=index，那么 nums[m] != nums[m+1]</p>
+<p>所以可知， 如果 nums[m] === nums[m+1] 则 target 所在的区间为 [m+2,h]；如果 nums[m] !=== nums[m+1] 则 target 所在区间为 [l,m]</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> singleNonDuplicate = <span class="function"><span class="keyword">function</span> (<span class="params">nums</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> l = <span class="number">0</span>, h = nums.length - <span class="number">1</span>, mid</span><br><span class="line">  <span class="keyword">while</span> (l &lt; h) &#123;</span><br><span class="line">    mid = <span class="built_in">Math</span>.floor(l + (h - l) / <span class="number">2</span>)</span><br><span class="line">    <span class="keyword">if</span> (mid % <span class="number">2</span> === <span class="number">1</span>) mid -= <span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> (nums[mid] === nums[mid + <span class="number">1</span>]) l = mid + <span class="number">2</span></span><br><span class="line">    <span class="keyword">else</span> h = mid</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> nums[h]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h1 id="第一个错误的版本"><a href="#第一个错误的版本" class="headerlink" title="第一个错误的版本"></a>第一个错误的版本</h1><blockquote>
+<p>LeetCode 278</p>
+<p>题目描述：找到一个错误版本。</p>
+<p>如果第 mid 个版本出错，那么第一个错误版本所在区间为 [l,mid]，此时 h=mid；否认第一个错误区间为 [mid+1,h],此时 l=mid+1</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> solution = <span class="function"><span class="keyword">function</span> (<span class="params">isBadVersion</span>) </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * @param &#123;integer&#125; n Total versions</span></span><br><span class="line"><span class="comment">     * @return &#123;integer&#125; The first bad version</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">n</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">let</span> l = <span class="number">1</span>, h = n, mid</span><br><span class="line">        <span class="keyword">while</span> (l &lt; h) &#123;</span><br><span class="line">            mid = <span class="built_in">Math</span>.floor(l + (h - l) / <span class="number">2</span>)</span><br><span class="line">            <span class="keyword">if</span> (isBadVersion(mid)) h = mid</span><br><span class="line">            <span class="keyword">else</span> l = mid + <span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> l</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h1 id="旋转数组的最小数字"><a href="#旋转数组的最小数字" class="headerlink" title="旋转数组的最小数字"></a>旋转数组的最小数字</h1><blockquote>
+<p>LeetCode 153</p>
+<p>Input: [3,4,5,1,2],<br>Output: 1</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> findMin = <span class="function"><span class="keyword">function</span> (<span class="params">nums</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> l = <span class="number">0</span>, h = nums.length - <span class="number">1</span></span><br><span class="line">  <span class="keyword">let</span> mid</span><br><span class="line">  <span class="keyword">while</span> (l &lt; h) &#123;</span><br><span class="line">    mid = <span class="built_in">Math</span>.floor(l + (h - l) / <span class="number">2</span>)</span><br><span class="line">    <span class="keyword">if</span> (nums[mid] &gt;= nums[h]) l = mid + <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span> h = mid</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> nums[l]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>如果第 mid 个数字比 nums[h]小，则最小数字在  [l,mid] 之中， h=mid，否则最小数字在 [mid+1,h]之中。</p>
+<h1 id="查找区间"><a href="#查找区间" class="headerlink" title="查找区间"></a>查找区间</h1><blockquote>
+<p>LeetCode 34</p>
+<p>Input: nums = [5,7,7,8,8,10], target = 8<br>Output: [3,4]<br>Input: nums = [5,7,7,8,8,10], target = 6<br>Output: [-1,-1]</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> searchRange = <span class="function"><span class="keyword">function</span> (<span class="params">nums, target</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> first = binarySearch(nums, target)</span><br><span class="line">  <span class="keyword">const</span> last = binarySearch(nums, target + <span class="number">1</span>) - <span class="number">1</span></span><br><span class="line">  <span class="keyword">if</span> (nums[first] !== target) <span class="keyword">return</span> [<span class="number">-1</span>, <span class="number">-1</span>]</span><br><span class="line">  <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> [first, <span class="built_in">Math</span>.max(last, first)]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> binarySearch = <span class="function">(<span class="params">nums, target</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> l = <span class="number">0</span>, h = nums.length</span><br><span class="line">  <span class="keyword">let</span> mid</span><br><span class="line">  <span class="keyword">while</span> (l &lt; h) &#123;</span><br><span class="line">    mid = <span class="built_in">Math</span>.floor(l + (h - l) / <span class="number">2</span>)</span><br><span class="line">    <span class="keyword">if</span> (nums[mid] &gt;= target) h = mid</span><br><span class="line">    <span class="keyword">else</span> l = mid + <span class="number">1</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> l</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果要查找的值比当前值小或者相等，则要查找的值的最左边在 [l,mid] 此时 h = mid，否则，要查找的值在 [mid+1,h]。</p>
+
+    
+  </div>
+
+</article>
+
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2019/06/30/贪心思想/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+<!-- Gitalk评论插件通用代码 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+const gitalk = new Gitalk({
+  clientID: '5e215e3e43c28696f30f',
+  clientSecret: '5cc4d36448daed2d31e600819538b56aec6bcfc0',
+  repo: 'xivier.github.io',
+  owner: 'XiViEr',
+  // 在这里设置一下截取前50个字符串, 这是因为 github 对 label 的长度有了要求, 如果超过
+  // 50个字符串则会报错.
+  // id: location.pathname.split('/').pop().substring(0, 49),
+  id: location.pathname,
+  admin: ['XiViEr'],
+  // facebook-like distraction free mode
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+<!-- Gitalk代码结束 -->
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
