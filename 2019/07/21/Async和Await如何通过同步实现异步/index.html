@@ -22,12 +22,12 @@
 <meta property="og:site_name" content="XiViEr">
 <meta property="og:description" content="Async和Await如何通过同步实现异步前置知识点 同步 异步 Async/Await  首先，js 是单线程的（重复三遍），所谓单线程， 通俗的讲就是，一根筋（比喻有点过分，哈哈）执行代码是一行一行的往下走（即所谓的同步）， 如果上面的没执行完，就痴痴的等着（是不是很像恋爱中在路边等她/他的你，假装 new 了个对象，啊哈哈哈，调皮一下很开心）， 还是举个 🌰 吧。 123456789101">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://xivier.github.io/2019/07/21/Async和Await如何通过同步实现异步/assets/16bf5d9e13d0e4b1">
+<meta property="og:image" content="https://xivier.github.io/2019/07/21/Async和Await如何通过同步实现异步/16bf5d9e13d0e4b1">
 <meta property="og:updated_time" content="2019-07-22T04:46:30.369Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="XiViEr">
 <meta name="twitter:description" content="Async和Await如何通过同步实现异步前置知识点 同步 异步 Async/Await  首先，js 是单线程的（重复三遍），所谓单线程， 通俗的讲就是，一根筋（比喻有点过分，哈哈）执行代码是一行一行的往下走（即所谓的同步）， 如果上面的没执行完，就痴痴的等着（是不是很像恋爱中在路边等她/他的你，假装 new 了个对象，啊哈哈哈，调皮一下很开心）， 还是举个 🌰 吧。 123456789101">
-<meta name="twitter:image" content="https://xivier.github.io/2019/07/21/Async和Await如何通过同步实现异步/assets/16bf5d9e13d0e4b1">
+<meta name="twitter:image" content="https://xivier.github.io/2019/07/21/Async和Await如何通过同步实现异步/16bf5d9e13d0e4b1">
 
   
 
@@ -229,7 +229,7 @@ ga('send', 'pageview');
 <li>插入/删除节点不影响其他节点，效率高（典型的例子：dom 操作）</li>
 </ul>
 <p>单向链表：是链表中最简单的一种，它包含两个域，一个信息域和一个指针域。这个链接指向列表中的下一个节点，而最后一个节点则指向一个空值。 </p>
-<p><img src="assets/16bf5d9e13d0e4b1" alt="image"></p>
+<p><img src="/2019/07/21/Async和Await如何通过同步实现异步/16bf5d9e13d0e4b1" alt="image"></p>
 <p> 一个单向链表包含两个值: 当前节点的值和一个指向下一个节点的链接</p>
 <p>单链特点：节点的链接方向是单向的；相对于数组来说，单链表的的随机访问速度较慢，但是单链表删除/添加数据的效率很高。</p>
 <p>理解 js 原型链/作用域链的话，理解这个很容易，他们是相通的。编程语言中，数组的长度时固定的，所以数组中的增加和删除比较麻烦，需要频繁的移动数组中的其他元素，而 js 作为一门动态语言，数组本质是一个类似数组的对象，是动态的，不需要预先分配内存</p>

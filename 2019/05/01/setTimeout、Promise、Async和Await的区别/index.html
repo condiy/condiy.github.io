@@ -23,12 +23,12 @@
 <meta property="og:site_name" content="XiViEr">
 <meta property="og:description" content="描述总结一下 setTimeout、Promise、Async/Await 的区别 正文我觉得这题主要是考察这三者在事件循环中的区别，事件循环中分为宏任务队列和微任务队列。 其中settimeout的回调函数放到宏任务队列里，等到执行栈清空以后执行； promise.then里的回调函数会放到相应宏任务的微任务队列里，等宏任务里面的同步代码执行完再执行；async函数表示函数里面可能会有异步方法，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://xivier.github.io/2019/05/01/setTimeout、Promise、Async和Await的区别/assets/68747470733a2f2f696d672d626c6f672e6373646e696d672e636e2f32303139303133313137343431333536322e706e67.png">
+<meta property="og:image" content="https://xivier.github.io/2019/05/01/setTimeout、Promise、Async和Await的区别/68747470733a2f2f696d672d626c6f672e6373646e696d672e636e2f32303139303133313137343431333536322e706e67.png">
 <meta property="og:updated_time" content="2019-07-21T13:42:15.203Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="setTimeout、Promise、Async&#x2F;Await 的区别">
 <meta name="twitter:description" content="描述总结一下 setTimeout、Promise、Async/Await 的区别 正文我觉得这题主要是考察这三者在事件循环中的区别，事件循环中分为宏任务队列和微任务队列。 其中settimeout的回调函数放到宏任务队列里，等到执行栈清空以后执行； promise.then里的回调函数会放到相应宏任务的微任务队列里，等宏任务里面的同步代码执行完再执行；async函数表示函数里面可能会有异步方法，">
-<meta name="twitter:image" content="https://xivier.github.io/2019/05/01/setTimeout、Promise、Async和Await的区别/assets/68747470733a2f2f696d672d626c6f672e6373646e696d672e636e2f32303139303133313137343431333536322e706e67.png">
+<meta name="twitter:image" content="https://xivier.github.io/2019/05/01/setTimeout、Promise、Async和Await的区别/68747470733a2f2f696d672d626c6f672e6373646e696d672e636e2f32303139303133313137343431333536322e706e67.png">
 
   
 
@@ -220,7 +220,7 @@ ga('send', 'pageview');
 <p>举个例子：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">func1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(func1())</span><br></pre></td></tr></table></figure>
 
-<p><a href="https://camo.githubusercontent.com/127fb6994c3e219bae33573cc46aab7f97b7367b/68747470733a2f2f696d672d626c6f672e6373646e696d672e636e2f32303139303133313137343431333536322e706e67" target="_blank" rel="noopener"><img src="assets/68747470733a2f2f696d672d626c6f672e6373646e696d672e636e2f32303139303133313137343431333536322e706e67.png" alt="在这里插入图片描述"></a><br>很显然，func1的运行结果其实就是一个Promise对象。因此我们也可以使用then来处理后续逻辑。</p>
+<p><a href="https://camo.githubusercontent.com/127fb6994c3e219bae33573cc46aab7f97b7367b/68747470733a2f2f696d672d626c6f672e6373646e696d672e636e2f32303139303133313137343431333536322e706e67" target="_blank" rel="noopener"><img src="/2019/05/01/setTimeout、Promise、Async和Await的区别/68747470733a2f2f696d672d626c6f672e6373646e696d672e636e2f32303139303133313137343431333536322e706e67.png" alt="在这里插入图片描述"></a><br>很显然，func1的运行结果其实就是一个Promise对象。因此我们也可以使用then来处理后续逻辑。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">func1().then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(res);  <span class="comment">// 30</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 <p>await的含义为等待，也就是 async 函数需要等待await后的函数执行完成并且有了返回结果（Promise对象）之后，才能继续执行下面的代码。await通过返回一个Promise对象来实现同步的效果。</p>
